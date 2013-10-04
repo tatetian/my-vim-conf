@@ -1,19 +1,25 @@
 set ruler
 set nocompatible
 syntax enable
-set tabstop=2
-set shiftwidth=2
-set smartindent
+
+" use kernel style
+set tabstop=4 
+set shiftwidth=4
 set expandtab
+
+set autoindent
+
 set fileencodings=utf8,gbk
 set backspace=indent,eol,start
-autocmd Filetype c set omnifunc=ccomplete#Complete
-autocmd Filetype cpp set omnifunc=cppcomplete#Complete
+"autocmd Filetype c set omnifunc=ccomplete#Complete
+"autocmd Filetype cpp set omnifunc=cppcomplete#Complete
 
+filetype on
 filetype plugin on
+filetype indent on
+
 set shellslash
 set grepprg=grep\ -nH\ $*
-filetype indent on
 
 " Force term to use 256 color instead of 16 colors
 " Thus color schema look same in gvim or terminal
@@ -34,18 +40,14 @@ set colorcolumn=80
 
 set number
 
-nnoremap <S-h>  :tabprev<CR>
-nnoremap <S-l>  :tabnext<CR>
+nnoremap <c-h>  :tabprev<CR>
+nnoremap <c-l>  :tabnext<CR>
 
 " Use patheogen to manage vim plugins
 call pathogen#infect() 
 
-" Install excuberant ctags first!
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-let Tlist_WinWidth = 40
-let Tlist_Exit_OnlyWindow = 1 
-map <F4> :TlistToggle<cr>
-map <F8> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+let g:NERDTreeWinSize = 45 
+map <F3> :NERDTree .<cr>
 
 " Install smooth scroll plugin 
 " https://github.com/terryma/vim-smooth-scroll
@@ -57,4 +59,8 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
 " For gvim
 set gfn=Menlo:h14
 set guifont=Menlo:h14
-set linespace=3
+set linespace=3"
+
+if has('autocmd')
+    autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cc source ~/.vim/c.vimrc
+endif
