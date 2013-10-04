@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -r ~/.vim
+rm -rf ~/.vim
 cp -r . ~/.vim
 rm -rf ~/.vim/.git
 
