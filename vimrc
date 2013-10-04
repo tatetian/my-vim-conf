@@ -10,7 +10,11 @@ set backspace=indent,eol,start
 autocmd Filetype c set omnifunc=ccomplete#Complete
 autocmd Filetype cpp set omnifunc=cppcomplete#Complete
 
+filetype on
 filetype plugin on
+filetype indent on
+set completeopt=longest,menu,preview
+
 set shellslash
 set grepprg=grep\ -nH\ $*
 filetype indent on
