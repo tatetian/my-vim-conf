@@ -43,6 +43,10 @@ set number
 nnoremap <c-h>  :tabprev<CR>
 nnoremap <c-l>  :tabnext<CR>
 
+" Enable highligh for search text and press space to turn off highlighting
+set hlsearch
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>"
+
 " Use patheogen to manage vim plugins
 call pathogen#infect() 
 
